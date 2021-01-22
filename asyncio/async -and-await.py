@@ -38,3 +38,8 @@ if __name__ =="__main__":
  print()
  #printing the three random numbers
  print(f"r1:{r1},r2:{r2},r3:{r3}")
+
+ ##Question 
+ # C in line 5, is that a dictionary?
+ #line 32, replace *() with [] what is the behavior?
+ #improve: use log statements.
