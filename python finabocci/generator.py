@@ -7,7 +7,6 @@ logging.basicConfig(
     stream=sys.stdout,
 )
 logger = logging.getLogger("generator")
-previous_number = 1
 class fibonaci_generator():
  def __init__(self,previous_number,number):
      self.previous_number = previous_number
@@ -15,6 +14,7 @@ class fibonaci_generator():
  def next_fibonaci_number(self):
     yield self.previous_number + self.number
 if __name__ == "__main__":
+    previous_number = 1
     number = 0
     logger.info("fibonaci number: {}".format(number))
     logger.info("press enter to continue...")
