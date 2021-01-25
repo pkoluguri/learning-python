@@ -1,13 +1,28 @@
+import logging
+import sys
+logging.basicConfig(
+    format="%(asctime)s %(levelname)s:%(name)s:%(message)s",
+    level=logging.DEBUG,
+    datefmt="%I:%M:%S",
+    stream=sys.stdout
+)
+logger = logging.getLogger("odd number generator")
 number = 0
-def generate_odd_number(number):
-  if number == 0:
-      number += 1
-      yield number
-  else:
-      number += 2
-      yield number
+class odd_number_generator():
+    def __init__(self,number):
+        self.number = number
+    def generate_odd_number(self):
+     number_yeilded = False
+     while not number_yeilded: 
+      if self.number %2 != 0:
+         number_yeilded = True
+         yield self.number
+      else:
+          self.number+=1
 while True:
-    number = next(generate_odd_number(number))
-    print(number)
-    print("press enter for next number...")
-    input()
+   ong = odd_number_generator(number)
+   number = next(ong.generate_odd_number())
+   logger.info("odd number:{}".format(number))
+   logger.info("press an key to continue...")
+   input()
+   number+=1
