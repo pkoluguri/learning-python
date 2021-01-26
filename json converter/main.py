@@ -25,3 +25,9 @@ if __name__ == "__main__":
     fr = filereader(fields)
     fr.get_json_and_convert()
     fr.print_required_fields()
+
+##input/comments
+# 1. Take the fields and file as input argument.
+# 2. In addition to file, support standard inputstream 
+# 3. process one line at a time 
+# 4. Use https://realpython.com/python-f-strings/ to construct ouput.    

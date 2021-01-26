@@ -26,6 +26,6 @@ if __name__ == "__main__":
 
 
 #improvements
-# 1 - write it as class and membeer function
-# 2 - call it from main function
-# 3 use log statement instead of print.    
+# 1. it is not working
+# 2. Look at the logic.
+ 

@@ -25,3 +25,8 @@ while True:
    logger.info("press an key to continue...")
    input()
    number+=1
+
+##input/comments
+# 1. It has compilation problem.
+# 2. imporve while loop
+# 3. add main method   
