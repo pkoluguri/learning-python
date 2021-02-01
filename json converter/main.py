@@ -7,7 +7,7 @@ class filereader():
    self.fields = fields.split(",") 
 
  def get_json_and_process(self):
-   if(self.filename == "-"):
+   if(self.filename == "no file given"):
      self.process_json_from_stdin()
    else:
      self.process_json_from_file()
@@ -20,8 +20,9 @@ class filereader():
   except FileNotFoundError:
     print(f"{self.filename} has not been found")
  
- def process_json_from_stdin(self):   
-  for line in sys.stdin:
+ def process_json_from_fileinput(self):   
+  import fileinput 
+  for line in fileinput.input():
     self.process(line)
 
  def process(self, line):
@@ -50,14 +51,10 @@ if __name__ == "__main__":
     import argparse
     import re
     parser = argparse.ArgumentParser(description="JSON log to Human readable")
-    parser.add_argument("-f","--file",default="-",dest="filename")
+    parser.add_argument("-f","--file",default="no file given",dest="filename")
     parser.add_argument("-fi","--fields",default="ts,m",help="enter the arguments with ,",dest="fields")
     args = parser.parse_args()
     print(args.filename)
     print(args.fields)
     fr = filereader(args.filename, args.fields)
     fr.get_json_and_process()
-
- #comments
- # explore fileinput, it seems to work for both the file and sys.stdin
- # for line in fileinput.input():  
