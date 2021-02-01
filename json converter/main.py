@@ -1,21 +1,36 @@
 import json
+import sys
+
 class filereader():
  def __init__(self,filename,fields):
    self.filename = filename
-   self.fields = fields.split(",")  
- def get_json_and_convert(self):
+   self.fields = fields.split(",") 
+
+ def get_json_and_process(self):
+   if(self.filename == "-"):
+     self.process_json_from_stdin()
+   else:
+     self.process_json_from_file()
+
+ def process_json_from_file(self):  
   try:
     with open(self.filename) as file:
-     line = file.readline()
-     while line != "":
-      try:    
-       data = json.loads(line)
-      except json.decoder.JSONDecodeError:
-       data = line
-      self.print_required_fields(data)
-      line = file.readline()
+     for line in file:
+       self.process(line)
   except FileNotFoundError:
-     print(f"{self.filename} has not been found")
+    print(f"{self.filename} has not been found")
+ 
+ def process_json_from_stdin(self):   
+  for line in sys.stdin:
+    self.process(line)
+
+ def process(self, line):
+  try:    
+    data = json.loads(line)
+  except json.decoder.JSONDecodeError:
+    data = line
+  self.print_required_fields(data)
+
  def print_required_fields(self,data):
          if type(data) == dict:
             for idx,field in enumerate(self.fields,start=1):
@@ -34,11 +49,15 @@ class filereader():
 if __name__ == "__main__":
     import argparse
     import re
-    parser = argparse.ArgumentParser(description="testing")
-    parser.add_argument("-f","--file",default="mcube.log")
-    parser.add_argument("-fi","--fields",default="ts",help="enter the arguments with ,")
+    parser = argparse.ArgumentParser(description="JSON log to Human readable")
+    parser.add_argument("-f","--file",default="-",dest="filename")
+    parser.add_argument("-fi","--fields",default="ts,m",help="enter the arguments with ,",dest="fields")
     args = parser.parse_args()
-    filename = re.findall(r"file='(.+)',",str(args))[0]
-    fields = re.findall(r"fields='(.+)'\)",str(args))[0]
-    fr = filereader(filename,fields)
-    fr.get_json_and_convert()
+    print(args.filename)
+    print(args.fields)
+    fr = filereader(args.filename, args.fields)
+    fr.get_json_and_process()
+
+ #comments
+ # explore fileinput, it seems to work for both the file and sys.stdin
+ # for line in fileinput.input():  

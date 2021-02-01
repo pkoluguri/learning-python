@@ -18,7 +18,9 @@ class odd_number_generator():
          yield self.number
       else:
           self.number+=1
-while True:
+if __name__ == "__main__":
+ number = 0
+ while True:
    ong = odd_number_generator(number)
    number = next(ong.generate_odd_number())
    logger.info("odd number:{}".format(number))
@@ -27,6 +29,5 @@ while True:
    number+=1
 
 ##input/comments
-# 1. It has compilation problem.
-# 2. imporve while loop
-# 3. add main method   
+# 1. imporve while loop
+# 2. take an optional argument, starting number.   
