@@ -3,6 +3,10 @@ import concurrent.futures
 import threading
 import time
 
+logging.basicConfig(
+    level=logging.DEBUG
+)
+
 class FakeDatabase:
     def __init__(self):
         self.value = 0
