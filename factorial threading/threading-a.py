@@ -7,7 +7,7 @@ def caluculate_factorial(number:int)->int:
      number_2-=1 
 
 if __name__ == "__main__":
- for i in range(1000):
+ for i in range(1,1000):
      thread = threading.Thread(target=caluculate_factorial,args=[i,])
      print(i)
      thread.start()
