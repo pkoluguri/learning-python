@@ -12,6 +12,8 @@ if __name__ == "__main__":
   num_list_thread = []
   num_list_main = []
   with concurrent.futures.ThreadPoolExecutor(max_workers=1000) as executor:
-      for i in range(1,10):
+      for i in range(1,1000):
           num_list_thread,num = executor.submit(caluculate_factorial,i,num_list_thread).result()
           num_list_main.append(num)
+  print(num_list_main)
+  print(num_list_thread)
