@@ -10,5 +10,5 @@ def caluculate_factorial(number):
 
 if __name__ == "__main__":
  with concurrent.futures.ThreadPoolExecutor(max_workers=1000) as executor:
-  for i in range(1000):
+  for i in range(1,1000):
     executor.submit(caluculate_factorial,i)
