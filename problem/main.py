@@ -1,5 +1,5 @@
 if __name__ == "__main__":
- list1 = [1,2,3,4,5,6,7,8,9]
+ list1 = [1,2,3,4,5,6,7]
  index_1 = 0
  index_2 = 1
  for i in range(2,len(list1)):
