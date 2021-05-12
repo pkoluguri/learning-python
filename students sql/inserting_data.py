@@ -1,12 +1,14 @@
 import sqlite3
 import random
 
+#normalized way
+
 names = ["Rahul","Manas","Rohit","Akhil","Arjun","Thomas","Bella","Sneha","Ruby","Mary"]
 Subjects = ["Biology","physics","chemistry","Geography","Computer","History & Civics"]
 Grades = ["A","B","C","D","E","F"]
 
 
-conn = sqlite3.connect("students.sqlite")
+conn = sqlite3.connect("student.sqlite")
 
 cur = conn.cursor()
 
