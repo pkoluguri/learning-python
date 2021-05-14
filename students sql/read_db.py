@@ -19,7 +19,7 @@ def get_student_with_all_As():
     cur.execute("SELECT name FROM Students INNER JOIN Subjects ON Students.id = Subjects .id WHERE grade = 'A' GROUP BY name HAVING count(name) = 3")
     cur_tuple = tuple(cur)
     if len(cur_tuple) > 0:
-     return cur_tuple[0][0]
+     return cur_tuple
     else:
         return -1
 
