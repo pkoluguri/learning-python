@@ -31,12 +31,10 @@ text_to_morse = {"a":"._",
 
 morse_to_text = {value:key for key,value in zip(text_to_morse.keys(),text_to_morse.values())}
 
-
 def englishtomorse(word):
     morse_string = ""
     for c in word:
        morse_string+=" "+text_to_morse[c.lower()]
-    print(morse_string)
     return morse_string
 
 def morsetoenglish(morse_code):
@@ -47,4 +45,6 @@ def morsetoenglish(morse_code):
          text += morse_to_text[c.lower()]
     return text
 
-print(morsetoenglish(englishtomorse("what is your name?")))
+morse_code = englishtomorse("Hello my name is manas")
+words =morsetoenglish(morse_code)
+print(words)
